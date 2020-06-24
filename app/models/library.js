@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Library = sequelize.define("Library", {
     id: {
-      type: Sequelize.INTEGER,
+      type: sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
