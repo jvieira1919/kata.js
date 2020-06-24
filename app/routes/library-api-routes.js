@@ -6,7 +6,7 @@ module.exports = function (app) {
         res.json(dbLibrary);
     });
 
-    app.get("/api/library/:title", async function(req, res){
+    app.get("/api/library/:id", async function(req, res){
         const dbLibrary = await db.Library.findOne({
             where:{
                 id: req.params.id
@@ -19,7 +19,7 @@ module.exports = function (app) {
 
     });
 
-    app.delete("/api/authors/:id", async function(req, res) {
+    app.delete("/api/library/:id", async function(req, res) {
         const dbLibrary = await db.Library.destroy({
           where: {
             id: req.params.id
