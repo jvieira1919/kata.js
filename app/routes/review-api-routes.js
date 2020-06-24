@@ -8,7 +8,7 @@ module.exports = function (app) {
     }
     const dbReview = await db.Review.findAll({
       where: query,
-    });
+    })
     res.json(dbReview);
   });
 
@@ -16,13 +16,13 @@ module.exports = function (app) {
     const dbReview = await db.Review.findOne({
       where: {
         id: id.params.id,
-      },
-    });
+      }
+    })
     res.json(dbReview);
   });
 
   app.post("/api/reviews", async function (req, res) {
-    const dbReview = await db.Review.create(req.body);
+    const dbReview = await db.Review.create(req.body)
     res.json(dbReview);
   });
 
@@ -30,8 +30,8 @@ module.exports = function (app) {
     const dbReview = await db.Review.destroy({
       where: {
         id: req.params.id,
-      },
-    });
+      }
+    })
     res.json();
   });
 
