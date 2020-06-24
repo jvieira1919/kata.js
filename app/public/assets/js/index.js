@@ -10,6 +10,25 @@ function getBooks(){
 
   $.get(`https://www.googleapis.com/books/v1/volumes?q=${preference}:fiction&maxResults=${max}`, function(data){
     console.log(data.items);//array of objects
+
+    // const books = data.items;
+
+    // books.forEach(book =>{
+    //   let div = $('<div></div'),
+    //       img = $('<img>'),
+    //       p = $('<p><p>');
+
+    //   let title = book.information.title,
+    //       cover = book.information.imags.smallthimbnial;
+    //   img.addAttribute(src, cover);
+    //   p.html(title);
+
+    //   div.append(img);
+    //   div.append(p);
+
+    //   $('start').append(div);
+    // })
+
   });
 }
 
