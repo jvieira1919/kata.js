@@ -14,5 +14,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     complete: DataTypes.BOOLEAN,
   });
+
+  library.associate = function (models) {
+    Library.hasMany(models.Review, {
+      onDelete: "cascade",
+    });
+  };
+
   return Library;
 };
