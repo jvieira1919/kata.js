@@ -1,16 +1,19 @@
 {
-  "name": "kata",
+  "name": "kata.js",
   "version": "1.0.0",
   "description": "",
-  "main": "kata.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "lint": "eslint **/*.js --quiet",
+    "test": "npm run lint"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.13"
+    "sequelize": "^5.21.13",
+    "eslint": "^4.19.1"
   }
 }
