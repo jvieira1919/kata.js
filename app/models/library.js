@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Library = sequelize.define("Library", {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
     complete: DataTypes.BOOLEAN,
   });
 
-  library.associate = function (models) {
+  Library.associate = function (models) {
     Library.hasMany(models.Review, {
       onDelete: "cascade",
     });

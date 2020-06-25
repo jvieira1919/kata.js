@@ -3,9 +3,12 @@
  *
  */
 
+{
+
  async function getBooks() {
   let preference = "Thriller",
     max = 17; 
+
 
   await $.get(`https://www.googleapis.com/books/v1/volumes?q=${preference}:fiction&maxResults=${max}`, function (data) {
     // console.log(data.items);//array of objects
@@ -35,11 +38,13 @@
       div.append(titlep);
       // div.append(isbnp);
       div.append(authorsp);
+
       div.append(show);
       div.append(summaryp);
       div.append(add);
 
       $('#start').append(div);
+
 
     }
 
@@ -49,6 +54,7 @@
 }
 
 getBooks();
+
 
 // TO DO ***************
 // style main books  page 
