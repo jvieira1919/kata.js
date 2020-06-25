@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = function (sequelize, DataTypes) {
   const Review = sequelize.define("Review", {
     id: {
@@ -20,3 +21,20 @@ module.exports = function (sequelize, DataTypes) {
   };
   return Review;
 };
+=======
+module.exports = function(sequelize, DataTypes) {
+    const Review = sequelize.define("Review", {
+      body: DataTypes.STRING
+    });
+  
+    Review.associate = function(models){
+        Review.belongsTo(models.Library,{
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
+    return Review;
+  };
+  
+>>>>>>> a59c4386afd40598612d6fa0e6ed13dbd1606bfe
