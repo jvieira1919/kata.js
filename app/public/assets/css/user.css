@@ -1,0 +1,81 @@
+body{
+    background: black;
+    color: #fff;
+}
+.jumbotron {
+    background: url("../img/jumbo.jpg") no-repeat center center; 
+  }
+ 
+  .formCard {
+
+    background: transparent;
+    border: none;
+  }
+
+  #searchTerm{
+      background: transparent;
+      color: #fff;
+  }
+
+  .btn{
+
+    background-color: #DF0D51;
+    color: #ffffff;
+}
+
+.signOut{
+
+ position: absolute;
+ top: 20px;
+ right: 20px;
+
+  
+}
+
+.user{
+    background-color: #DF0D51;
+    color: #ffffff;
+}
+
+.myBtn{
+  
+    margin-bottom: 10px;
+}
+
+.brainimg{
+    margin: auto;
+    width: 40%;
+}
+
+.book-list{
+    margin-top: 50px;
+    visibility: hidden;
+}
+
+.card-img{
+    height: 250px;
+    width: 150px;
+    padding-right: 0px;
+}
+
+.imgCol{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.textCol{
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.searchCard{
+background-color: red;
+}
+
+.btn-danger{
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}

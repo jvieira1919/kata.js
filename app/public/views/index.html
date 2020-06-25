@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+     <link rel="stylesheet" href="../assets/css/hover.css">   
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Book Brains</title>
 </head>
+
 <body>
-    <h1>home</h1>
-    <div id="start"></div>
+
+
+    <header class="showcase">
+        <div class="showcase-top">
+            <img src="./bbb.png" id="bookBrain" alt="bookBrain" />
+            <a href="#" class="btn btn-rounded signIn ">Sign In</a>
+        </div>
+        <div class="showcase-content">
+            <h1>Readers wanted</h1>
+            <p>These books won’t read themselves</p>
+            <a href="#" class="btn btn-xl great hvr-push">DISCOVER GREAT BOOKS <i class="fas fa-chevron-right btn-icon"></i></a>
+        </div>
+
+
+
+        
+    </header>
+      
+     <div class="form-box">
+
+        <div class="button-box">
+            <div id="btn"></div>
+         <button type="button" class="toggle-btn "  onclick="signIn()">Sign in</button>
+         <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button>
+
+        </div>
+         
+        <form action="" id="signIn" class="input-group">
+            <input type="text" class="input-field" placeholder="User Id" required>
+            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type="submit" class="submit-btn hvr-push"> Sign In</button>
+        </form>
+        <form action="" id="signUp" class="input-group">
+            <input type="text" class="input-field" placeholder="User Id" required>
+            <input type="text" class="input-field" placeholder="Email" required>
+            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+            <button type="submit" class="submit-btn hvr-push"> Sign Up</button>
+        </form>
+
+
+     </div>
+
     <script src="../assets/js/index.js"></script>
+
 </body>
+
 </html>
