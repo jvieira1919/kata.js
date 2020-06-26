@@ -1,87 +1,45 @@
-/**
- * Google books API Docs: https://developers.google.com/books/docs/v1/using#auth
- *
- */
+const signInEl= document.querySelector('.signIn');
+const showcase=document.querySelector('.showcase-content');
+const great=document.querySelector('.great');
+const signInSlider=document.querySelector('#signIn');
+const signUpSlider=document.querySelector('#signUp');
+const btnSlider=document.querySelector('#btn');
+const formBox=document.querySelector('.form-box');
+const bookBrain=document.querySelector('#bookBrain');
 
- async function getBooks() {
-  let preference = "Thriller",
-    max = 17; 
 
-  await $.get(`https://www.googleapis.com/books/v1/volumes?q=${preference}:fiction&maxResults=${max}`, function (data) {
-    // console.log(data.items);//array of objects
 
-    const books = data.items;
-  console.log(books);
-  
-    for (let i = 0; i < books.length; i++) {
-      let title = books[i].volumeInfo.title,
-        cover = books[i].volumeInfo.imageLinks.smallThumbnail,
-        // isbn = books[i].volumeInfo.industryIdentifiers[1].identifier,
-        authors = books[i].volumeInfo.authors[0],
-        summary = books[i].volumeInfo.description;
 
-      let div = $(`<div class='parent' data-result=${i}></div>`);
-      let = img = $(`<img>`);
-      titlep = $(`<p id="title">Title: ${title}<p>`),
-        // isbnp = $(`<p id="isbn">${isbn}<p>`),
-        authorsp = $(`<p id="authors">Author: ${authors}<p>`),
-        summaryp = $(`<p class="summary">Summary: ${summary}<p>`),
-        show = $(`<button class="show-summary">Show Summary</button>`),
-        add = $(`<button class="add">add</button>`);
+signInEl.addEventListener('click', buttonShow);
+great.addEventListener('click', buttonShow);
 
-      img.attr('src', cover);
-
-      div.append(img);
-      div.append(titlep);
-      // div.append(isbnp);
-      div.append(authorsp);
-      div.append(show);
-      div.append(summaryp);
-      div.append(add);
-
-      $('#start').append(div);
+ function buttonShow(){
+    
+    if( showcase.style.visibility=='hidden') {
+        formBox.style.visibility='hidden';
+        showcase.style.visibility='visible' ;
+        signInEl.innerHTML = 'Sign in';
+        bookBrain.style.visibility='visible';
 
     }
+    else{
+        bookBrain.style.visibility='hidden';
+        showcase.style.visibility='hidden';
+        signInEl.innerHTML = 'Home';
+        formBox.style.visibility='visible';
+    }
+    
+};
 
-  })
-
-  $('p.summary').hide()
-}
-
-getBooks();
-
-// TO DO ***************
-// style main books  page 
-// get page to serve 
-// @JV create the post route  me 2 consume 
-// @JV create the Get route for our libraries table 4 libraries page
-
-
-$('#start').on('click', ".show-summary", function (event) {
-  if (event.target.matches(".show-summary")) {
-    $(event.target.parentElement.children[6]).toggle()
-  }
-})
-
-$('#start').on('click', "button.add", function (event) {
-  let title, author;
-  if (event.target.matches(".add")) {
-    title = event.target.parentElement.children[1].innerHTML;
-    author = event.target.parentElement.children[3].innerHTML;
-  }
-  // $.post();/// post to JV's endpoint 
-  const obj = {
-    // isbn: 
-    authors: author,
-    title: title,
-    singer: "james"
-  }
-
-  console.log(obj);
-})
-
-
-
-
+ function signUp(){
+    signInSlider.style.left="-400px";
+    signUpSlider.style.left="50px";
+    btnSlider.style.left="110px"
+ }
+ function signIn(){
+    signInSlider.style.left="50px";
+    signUpSlider.style.left="450px";
+    btnSlider.style.left="0px"
+ }
 
  
