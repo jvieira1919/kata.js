@@ -9,11 +9,11 @@ const db = require("./app/models");
 
 app.use(express.static("app/public"));
 
-// require("./app/routes/api-routes.js")(app);
 require("./app/routes/html-routes.js")(app);
+require("./app/routes/books-api-routes.js")(app);
 
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
 });
