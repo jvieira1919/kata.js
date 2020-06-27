@@ -6,12 +6,21 @@ $(document).ready(function(){
     var placeHldr="<img src='https://via.placeholder.com/150'>";
     var searchData;
     var  myBtn =document.querySelector(".myBtn");
+    var chk = document.getElementById('chk');
    
   
     myBtn.addEventListener('click', function(){   
         bookList.style.visibility='hidden';
     });
+
+    
+chk.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
    
+
+
+ 
 
     document.querySelector(".fiction").addEventListener("click", function searchBtn(){
        
@@ -63,6 +72,11 @@ $(document).ready(function(){
        
         searchData='subject:romance';
         search(searchData);
+    });
+
+    document.querySelector("#search").addEventListener("click", function searchBtn(){
+
+        search( $("#searchTerm").val());
     });
 
     
@@ -150,7 +164,7 @@ $(document).ready(function(){
             <p class="card-text"><b> Author : </b> ${author}</p> 
             <p class="card-text"><b> Publisher : </b> ${publisher}</p>
             <p class="card-text"><b> Categories : </b> ${categories}</p>  
-            <p class="card-text"><b> Description : </b> ${description}</p> 
+            <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
              <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
              <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
 
