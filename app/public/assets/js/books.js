@@ -8,14 +8,65 @@ $(document).ready(function(){
     var  myBtn =document.querySelector(".myBtn");
    
   
-    myBtn.addEventListener('click', function(){
-     
+    myBtn.addEventListener('click', function(){   
         bookList.style.visibility='hidden';
-
-
-    })
+    });
    
-    $("#search").click(function(){
+
+    document.querySelector(".fiction").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:fiction';
+        search(searchData);
+    });
+ 
+    document.querySelector(".science").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:science';
+        search(searchData);
+    });
+        
+    document.querySelector(".art").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:art';
+        search(searchData);
+    });   
+
+    document.querySelector(".business").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:business';
+        search(searchData);
+    });
+
+
+    document.querySelector(".poetry").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:poetry';
+        search(searchData);
+    });
+
+    document.querySelector(".history").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:history';
+        search(searchData);
+    });
+    document.querySelector(".horror").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:horror';
+        search(searchData);
+    });
+    document.querySelector(".religion").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:religion';
+        search(searchData);
+    });
+    document.querySelector(".romance").addEventListener("click", function searchBtn(){
+       
+        searchData='subject:romance';
+        search(searchData);
+    });
+
+    
+    function search(searchData){
      
         event.preventDefault();
       
@@ -23,7 +74,7 @@ $(document).ready(function(){
         bookList.style.visibility='visible';
 
         outputList.innerHTML="";
-        searchData=$("#searchTerm").val();
+        // searchData=$("#searchTerm").val();
         if (searchData==="", searchData===null){
             displayError();
         }
@@ -53,7 +104,7 @@ $(document).ready(function(){
         }
 
         $("#searchTerm").val("");
-    });
+    };
 
 
      function displayResults(res) {
