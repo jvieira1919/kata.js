@@ -1,11 +1,6 @@
 
 module.exports = function (sequelize, DataTypes) {
-  const Books = sequelize.define("Book", {
-    id: {
-      type:   DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
+  const Book = sequelize.define("Book", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,6 +23,5 @@ module.exports = function (sequelize, DataTypes) {
     } 
   });
 
-
-  return Books;
+  return Book;
 };
