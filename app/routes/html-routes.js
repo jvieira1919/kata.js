@@ -3,6 +3,12 @@ const path = require("path");
 
 module.exports = function (app) {
   app.get("/", function (req, res) {
-    res.sendFile("index.html",{root: path.join(__dirname,"../public/add/views")});
+    res.sendFile("index.html",{root: path.join(__dirname,"../public/views")});
+  });
+  app.get("/book.html", function (req, res) {
+    res.sendFile("book.html",{root: path.join(__dirname,"../public/views")});
+  });
+  app.get("/user", function (req, res) {
+    res.sendFile("user.html",{root: path.join(__dirname,"../public/views")});
   });
 };

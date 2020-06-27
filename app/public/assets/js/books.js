@@ -1,11 +1,13 @@
 $(document).ready(function(){
-    var title, author, publisher, bookLink, bookImg, bookIsbn, description;
+    var title, author, publisher, bookLink, bookImg, bookIsbn, description, categories;
     var outputList=document.getElementById("list-output");
     var bookList =document.querySelector(".book-list");
     var bookUrl="https://www.googleapis.com/books/v1/volumes?q=";
     var placeHldr="<img src='https://via.placeholder.com/150'>";
     var searchData;
     var  myBtn =document.querySelector(".myBtn");
+   
+  
     myBtn.addEventListener('click', function(){
      
         bookList.style.visibility='hidden';
@@ -14,7 +16,10 @@ $(document).ready(function(){
     })
    
     $("#search").click(function(){
-   
+     
+        event.preventDefault();
+      
+
         bookList.style.visibility='visible';
 
         outputList.innerHTML="";
@@ -34,7 +39,7 @@ $(document).ready(function(){
                     }
                     else{
                           
-                           //$("title").css('visibility: visible');
+                           
                           displayResults(res);
 
                     }
@@ -66,9 +71,9 @@ $(document).ready(function(){
              bookLink=res.items[i].volumeInfo.previewLink;
              bookIsbn = res.items[i].volumeInfo.industryIdentifiers[1].identifier;
              bookImg = res.items[i].volumeInfo.imageLinks.smallThumbnail;
+             categories=res.items[i].volumeInfo.categories[0];
 
-
-              outputList.innerHTML += '<div class="row mt-4' + 
+              outputList.innerHTML += '<div class="row mt-4">' + 
               formatOutput(bookImg, title, author, publisher, bookIsbn) + '</div>';
 
         }
@@ -79,7 +84,7 @@ $(document).ready(function(){
 
         var viewUrl='book.html?isbn=' + bookIsbn;
 
-        var htmlCard = `<div class="card searchCard">
+        var htmlCard = `<div class = 'card searchCard' style= 'background: #DF0D51'>
          
         <div  class="card-body">
         <div  class="row">
@@ -88,29 +93,21 @@ $(document).ready(function(){
            </div>
      
            <div  class="col-md-8 textCol">
-       
-           
+              
+            <h3 class="card-title">${title}</h3> 
 
-                
-            <h5 class="card-title">${title}</h5> 
-
-            <p class="card-text">Author: ${author}</p> 
-            <p class="card-text">Publisher: ${publisher}</p> 
-            <p class="card-text">Publisher: ${description}</p> 
-             <a target="_blank" href="${viewUrl}" class="btn btn-danger hvr-push">Read More </a>
-             <a target="_blank" href="" class="btn btn-danger hvr-push">Add My Books </a>
-
-          
+            <p class="card-text"><b> Author : </b> ${author}</p> 
+            <p class="card-text"><b> Publisher : </b> ${publisher}</p>
+            <p class="card-text"><b> Categories : </b> ${categories}</p>  
+            <p class="card-text"><b> Description : </b> ${description}</p> 
+             <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
+             <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
 
            </div>
 
-
-
-
-
            </div>
            </div>
-        </div>
+        </div>                                 
         `
 
        return htmlCard;
