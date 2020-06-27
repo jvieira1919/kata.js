@@ -1,6 +1,8 @@
 body{
-    background: black;
+    background: #fff;
     color: #fff;
+    transition: 0.2s linear;
+    margin-bottom: 10%;
 }
 .jumbotron {
     background: url("../img/jumbo.jpg") no-repeat center center; 
@@ -96,6 +98,7 @@ background-color: #DF0D51;
     width: 100%;
 }
 
+
 .text{
     width: 100%;
     background-color: #DF0D51;
@@ -124,4 +127,5 @@ background-color: #DF0D51;
   .text::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+
     background-color: #DF0D51; }

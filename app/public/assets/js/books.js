@@ -6,12 +6,21 @@ $(document).ready(function(){
     var placeHldr="<img src='https://via.placeholder.com/150'>";
     var searchData;
     var  myBtn =document.querySelector(".myBtn");
+    var chk = document.getElementById('chk');
    
   
     myBtn.addEventListener('click', function(){   
         bookList.style.visibility='hidden';
     });
+
+    
+chk.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
    
+
+
+ 
 
     document.querySelector(".fiction").addEventListener("click", function searchBtn(){
        
