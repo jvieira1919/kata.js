@@ -1,13 +1,15 @@
 const db = require("../models");
+// const modelBook = require("../models/books.js");
+
 
 module.exports = function (app) {
   app.get("/api/books/", async function (req, res) {
-    const dbBooks = await db.Books.findAll({});
+    const dbBooks = await db.Book.findAll({});
     res.json(dbBooks);
   });
 
   app.get("/api/books/:id", async function (req, res) {
-    const dbBooks = await db.Books.findOne({
+    const dbBooks = await db.Book.findOne({
       where: {
         id: req.params.id,
       },
@@ -16,18 +18,19 @@ module.exports = function (app) {
   });
 
   app.post("/api/books", async function (req, res) {
-    const dbBooks = await db.Books.create({
-      title: req.title,
-      genre: req.genre,
-      author: req.author,
-      review: req.review,
+    const {title, genre, author, review} = req.body;
+    const dbBooks = await db.Book.create({
+      title,
+      genre,
+      author,
+      review,
       complete: false,
     });
     res.json(dbBooks);
   });
 
   app.put("/api/books/:id", async function (req, res){
-    const dbBooks = await db.Books.update({
+    const dbBooks = await db.Book.update({
       where:{
         id: req.params.id,
         review: req.params.review
@@ -36,7 +39,7 @@ module.exports = function (app) {
   })
 
   app.delete("/api/books/:id", async function (req, res) {
-    const dbBooks = await db.Books.destroy({
+    const dbBooks = await db.Book.destroy({
       where: {
         id: req.params.id,
       },
