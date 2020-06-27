@@ -155,7 +155,7 @@ $(document).ready(function(){
             <p class="card-text"><b> Author : </b> ${author}</p> 
             <p class="card-text"><b> Publisher : </b> ${publisher}</p>
             <p class="card-text"><b> Categories : </b> ${categories}</p>  
-            <p class="card-text"><b> Description : </b> ${description}</p> 
+            <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
              <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
              <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
 
