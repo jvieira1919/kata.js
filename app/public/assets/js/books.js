@@ -65,6 +65,11 @@ $(document).ready(function(){
         search(searchData);
     });
 
+    document.querySelector("#search").addEventListener("click", function searchBtn(){
+
+        search( $("#searchTerm").val());
+    });
+
     
     function search(searchData){
      
