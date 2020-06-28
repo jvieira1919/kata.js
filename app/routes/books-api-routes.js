@@ -18,15 +18,21 @@ module.exports = function (app) {
   });
 
   app.post("/api/books", async function (req, res) {
-    const {title, genre, author, review} = req.body;
-    const dbBooks = await db.Book.create({
-      title,
-      genre,
-      author,
-      review,
-      complete: false,
-    });
-    res.json(dbBooks);
+    const { title, genre, author, review, cover} = req.body;
+  
+    try {
+      const dbBooks = await db.Book.create({
+        title,
+        genre,
+        author,
+        review,
+        cover,
+        complete: false,
+      });
+      res.json(dbBooks);
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   app.put("/api/books/:id", async function (req, res){
