@@ -18,10 +18,6 @@ $(document).ready(function () {
         document.body.classList.toggle('dark');
     });
 
-    // initial page load 
-    search('subject:fiction');
-
-
     document.querySelector(".fiction").addEventListener("click", function searchBtn() {
 
         searchData = 'subject:fiction';
@@ -79,11 +75,9 @@ $(document).ready(function () {
         search($("#searchTerm").val());
     });
 
-
     function search(searchData) {
 
-        // event.preventDefault();
-
+        event.preventDefault();
 
         bookList.style.visibility = 'visible';
 
@@ -125,8 +119,12 @@ $(document).ready(function () {
 
         for (var i = 0; i < res.items.length; i++) {
 
+            // item=res.items[i];
+            // console.log(item);
             title = res.items[i].volumeInfo.title;
+            //  console.log(title);
             author = res.items[i].volumeInfo.authors;
+            //console.log(author);
             publisher = res.items[i].volumeInfo.publisher;
             description = res.items[i].volumeInfo.description;
             bookLink = res.items[i].volumeInfo.previewLink;
@@ -145,38 +143,71 @@ $(document).ready(function () {
 
         var viewUrl = 'book.html?isbn=' + bookIsbn;
 
-        var htmlCard = `<div class = 'card searchCard' style= 'background: #DF0D51'>
-         
-        <div  class="card-body">
-        <div  class="row">
-           <div  class="col-md-4 imgCol">
-            <img src="${bookImg}" class="card-img" alt="...">
-           </div>
-     
-           <div  class="col-md-8 textCol">
-              
-            <h3 class="card-title">${title}</h3> 
+        var htmlCard = `
+        <div class = 'card searchCard' style= 'background: #DF0D51'>
+                <div  class="card-body">
+                    <div  class="row">
+                        <div  class="col-md-4 imgCol">
+                                <img src="${bookImg}" class="card-img" alt="...">
+                        </div>
+                        <div  class="col-md-8 textCol">
+                                <h3 class="card-title">${title}</h3> 
 
-            <p class="card-text"><b> Author : </b> ${author}</p> 
-            <p class="card-text"><b> Publisher : </b> ${publisher}</p>
-            <p class="card-text"><b> Categories : </b> ${categories}</p>  
-            <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
-             <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
-             <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
-           </div>
-
-           </div>
-           </div>
+                                <p class="card-text"><b> Author : </b> ${author}</p> 
+                                <p class="card-text"><b> Publisher : </b> ${publisher}</p>
+                                <p class="card-text"><b> Categories : </b> ${categories}</p>  
+                                <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
+                                <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
+                                <a target=" href="" class="btn btn-outline-warning hvr-push add">Add My Books </a>
+                        </div>
+                </div>
+            </div>
         </div>                                 
         `
 
         return htmlCard;
     }
 
-
 });
 
+// // GIT PULL NO CONFLICTS
+$('.book-list').on('click', function (event) {
+    let target = event.target;
+    let author, genre, title, cover;
+    if (target.matches('a.add')) {
+        title = event.target.parentElement.children[0].innerHTML,
+            author = event.target.parentElement.children[1].innerHTML,
+            genre = event.target.parentElement.children[3].innerHTML,
+            cover = event.target.parentElement.parentElement.children[0].children[0].getAttribute("src");
 
 
+        console.log(title);
+
+    }
+    const search = '<b>(.*?)</b> ';
+
+    const searchRegExp = new RegExp(search, 'g');
+    const replaceWith = '';
+    const trimmedTitle = title.replace(searchRegExp, replaceWith);
+    const trimmedAuthor = author.replace(searchRegExp, replaceWith);
+    const trimmedGenre = genre.replace(searchRegExp, replaceWith);
+
+
+    const obj = {
+        "title": trimmedTitle,
+        "genre": trimmedGenre,
+        "author": trimmedAuthor,
+        "review": "96.0",
+        "cover": cover
+    }
+  
+    $.ajax("/api/books", {
+        type: "POST",
+        data: JSON.stringify(obj),
+        dataType: "json",
+        contentType: "application/json"
+    })
+    console.log(obj);
+})
 
 
