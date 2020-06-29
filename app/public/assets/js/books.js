@@ -163,7 +163,6 @@ $(document).ready(function () {
             <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
              <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
              <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
-             <i class="fas fa-check check"></i>
            </div>
 
            </div>
