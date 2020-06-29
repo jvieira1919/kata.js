@@ -1,118 +1,118 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var title, author, publisher, bookLink, bookImg, bookIsbn, description, categories;
-    var outputList=document.getElementById("list-output");
-    var bookList =document.querySelector(".book-list");
-    var bookUrl="https://www.googleapis.com/books/v1/volumes?q=";
-    var placeHldr="<img src='https://via.placeholder.com/150'>";
+    var outputList = document.getElementById("list-output");
+    var bookList = document.querySelector(".book-list");
+    var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
+    var placeHldr = "<img src='https://via.placeholder.com/150'>";
     var searchData;
-    var  myBtn =document.querySelector(".myBtn");
+    var myBtn = document.querySelector(".myBtn");
     var chk = document.getElementById('chk');
-   
-  
-    myBtn.addEventListener('click', function(){   
-        bookList.style.visibility='hidden';
+
+
+    myBtn.addEventListener('click', function () {
+        bookList.style.visibility = 'hidden';
     });
 
-    
-chk.addEventListener('change', () => {
-	document.body.classList.toggle('dark');
-});
-   
 
-
- 
-
-    document.querySelector(".fiction").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:fiction';
-        search(searchData);
+    chk.addEventListener('change', () => {
+        document.body.classList.toggle('dark');
     });
- 
-    document.querySelector(".science").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:science';
-        search(searchData);
-    });
-        
-    document.querySelector(".art").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:art';
-        search(searchData);
-    });   
 
-    document.querySelector(".business").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:business';
+    // initial page load 
+    search('subject:fiction');
+
+
+    document.querySelector(".fiction").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:fiction';
         search(searchData);
     });
 
+    document.querySelector(".science").addEventListener("click", function searchBtn() {
 
-    document.querySelector(".poetry").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:poetry';
+        searchData = 'subject:science';
         search(searchData);
     });
 
-    document.querySelector(".history").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:history';
-        search(searchData);
-    });
-    document.querySelector(".horror").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:horror';
-        search(searchData);
-    });
-    document.querySelector(".religion").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:religion';
-        search(searchData);
-    });
-    document.querySelector(".romance").addEventListener("click", function searchBtn(){
-       
-        searchData='subject:romance';
+    document.querySelector(".art").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:art';
         search(searchData);
     });
 
-    document.querySelector("#search").addEventListener("click", function searchBtn(){
+    document.querySelector(".business").addEventListener("click", function searchBtn() {
 
-        search( $("#searchTerm").val());
+        searchData = 'subject:business';
+        search(searchData);
     });
 
-    
-    function search(searchData){
-     
-        event.preventDefault();
-      
 
-        bookList.style.visibility='visible';
+    document.querySelector(".poetry").addEventListener("click", function searchBtn() {
 
-        outputList.innerHTML="";
+        searchData = 'subject:poetry';
+        search(searchData);
+    });
+
+    document.querySelector(".history").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:history';
+        search(searchData);
+    });
+    document.querySelector(".horror").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:horror';
+        search(searchData);
+    });
+    document.querySelector(".religion").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:religion';
+        search(searchData);
+    });
+    document.querySelector(".romance").addEventListener("click", function searchBtn() {
+
+        searchData = 'subject:romance';
+        search(searchData);
+    });
+
+    document.querySelector("#search").addEventListener("click", function searchBtn() {
+
+        search($("#searchTerm").val());
+    });
+
+
+    function search(searchData) {
+
+        // event.preventDefault();
+
+
+        bookList.style.visibility = 'visible';
+
+        outputList.innerHTML = "";
         // searchData=$("#searchTerm").val();
-        if (searchData==="", searchData===null){
+        if (searchData === "", searchData === null) {
             displayError();
         }
         else {
             $.ajax({
-                url:bookUrl + searchData,
+                url: bookUrl + searchData,
                 dataType: "json",
-                success: function(res){
+                success: function (res) {
 
                     console.log(res);
-                    if(res.totalItem===0){
+                    if (res.totalItem === 0) {
                         alert("no results!... try again");
                     }
-                    else{
-                          
-                           
-                          displayResults(res);
+                    else {
+
+
+                        displayResults(res);
 
                     }
                 },
 
-                error: function(){
+                error: function () {
                     alert("Something went wrong...")
-                }         
+                }
 
             });
         }
@@ -121,33 +121,29 @@ chk.addEventListener('change', () => {
     };
 
 
-     function displayResults(res) {
-         
-        for(var i=0; i<res.items.length; i++){
+    function displayResults(res) {
 
-             // item=res.items[i];
-             // console.log(item);
-            title= res.items[i].volumeInfo.title;
-          //  console.log(title);
-             author=res.items[i].volumeInfo.authors;
-             //console.log(author);
-             publisher=res.items[i].volumeInfo.publisher;
-             description=res.items[i].volumeInfo.description;
-             bookLink=res.items[i].volumeInfo.previewLink;
-             bookIsbn = res.items[i].volumeInfo.industryIdentifiers[1].identifier;
-             bookImg = res.items[i].volumeInfo.imageLinks.smallThumbnail;
-             categories=res.items[i].volumeInfo.categories[0];
+        for (var i = 0; i < res.items.length; i++) {
 
-              outputList.innerHTML += '<div class="row mt-4">' + 
-              formatOutput(bookImg, title, author, publisher, bookIsbn) + '</div>';
+            title = res.items[i].volumeInfo.title;
+            author = res.items[i].volumeInfo.authors;
+            publisher = res.items[i].volumeInfo.publisher;
+            description = res.items[i].volumeInfo.description;
+            bookLink = res.items[i].volumeInfo.previewLink;
+            bookIsbn = res.items[i].volumeInfo.industryIdentifiers[1].identifier;
+            bookImg = res.items[i].volumeInfo.imageLinks.smallThumbnail;
+            categories = res.items[i].volumeInfo.categories[0];
+
+            outputList.innerHTML += '<div class="row mt-4">' +
+                formatOutput(bookImg, title, author, publisher, bookIsbn) + '</div>';
 
         }
-     }
+    }
 
 
-    function formatOutput (bookImg, title, author, publisher, bookIsbn){
+    function formatOutput(bookImg, title, author, publisher, bookIsbn) {
 
-        var viewUrl='book.html?isbn=' + bookIsbn;
+        var viewUrl = 'book.html?isbn=' + bookIsbn;
 
         var htmlCard = `<div class = 'card searchCard' style= 'background: #DF0D51'>
          
@@ -167,7 +163,7 @@ chk.addEventListener('change', () => {
             <p class="card-text"><b> Description : </b><textarea class="form-control text" rows="4" >${description}</textarea></p> 
              <a target="_blank" href="${viewUrl}" class="btn btn-outline-warning hvr-push">Read More </a>
              <a target="_blank" href="" class="btn btn-outline-warning hvr-push">Add My Books </a>
-
+             <i class="fas fa-check check"></i>
            </div>
 
            </div>
@@ -175,10 +171,10 @@ chk.addEventListener('change', () => {
         </div>                                 
         `
 
-       return htmlCard;
+        return htmlCard;
     }
-         
- 
+
+
 });
 
 
