@@ -3,7 +3,7 @@ const db = require("../models");
 
 
 module.exports = function (app) {
-  app.get("/api/books/", async function (req, res) {
+  app.get("/api/books", async function (req, res) {
     const dbBooks = await db.Book.findAll({});
     res.json(dbBooks);
   });
