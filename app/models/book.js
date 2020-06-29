@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    cover: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     complete: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
