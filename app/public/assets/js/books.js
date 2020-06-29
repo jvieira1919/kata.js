@@ -13,6 +13,7 @@ $(document).ready(function () {
         bookList.style.visibility = 'hidden';
     });
 
+        search('subject:art');
 
     chk.addEventListener('change', () => {
         document.body.classList.toggle('dark');
@@ -77,7 +78,7 @@ $(document).ready(function () {
 
     function search(searchData) {
 
-        event.preventDefault();
+        // event.preventDefault();
 
         bookList.style.visibility = 'visible';
 
