@@ -18,10 +18,6 @@ $(document).ready(function () {
         document.body.classList.toggle('dark');
     });
 
-
-
-
-
     document.querySelector(".fiction").addEventListener("click", function searchBtn() {
 
         searchData = 'subject:fiction';
@@ -79,11 +75,9 @@ $(document).ready(function () {
         search($("#searchTerm").val());
     });
 
-
     function search(searchData) {
 
         event.preventDefault();
-
 
         bookList.style.visibility = 'visible';
 
@@ -174,12 +168,7 @@ $(document).ready(function () {
         return htmlCard;
     }
 
-
 });
-
-
-
-
 
 // // GIT PULL NO CONFLICTS
 $('.book-list').on('click', function (event) {
@@ -199,7 +188,6 @@ $('.book-list').on('click', function (event) {
 
     const searchRegExp = new RegExp(search, 'g');
     const replaceWith = '';
-
     const trimmedTitle = title.replace(searchRegExp, replaceWith);
     const trimmedAuthor = author.replace(searchRegExp, replaceWith);
     const trimmedGenre = genre.replace(searchRegExp, replaceWith);
