@@ -134,10 +134,19 @@ chk.addEventListener('change', () => {
              publisher=res.items[i].volumeInfo.publisher;
              description=res.items[i].volumeInfo.description;
              bookLink=res.items[i].volumeInfo.previewLink;
-             bookIsbn = res.items[i].volumeInfo.industryIdentifiers[1].identifier;
+             let bookIsbnArray = res.items[i].volumeInfo.industryIdentifiers;
+            //  for(let j = 0; j < bookIsbnArray.length; j++) {
+            //      if(Object.keys(bookIsbnArray.identifier).includes('ISBN-13')) {
+            //          bookIsbn = res.items[i].volumeInfo.industryIdentifiers[j].identifier;
+            //      } else {
+            //          console.log('There is no ISBN-13')
+            //     //  }
+            //  }
+            bookIsbn = res.items[i].volumeInfo.industryIdentifiers[0].identifier;
              bookImg = res.items[i].volumeInfo.imageLinks.smallThumbnail;
              categories=res.items[i].volumeInfo.categories[0];
-
+               console.log(" This is book Isbn " + bookIsbn);
+               console.log("this is the actual object", res.items[i])
               outputList.innerHTML += '<div class="row mt-4">' + 
               formatOutput(bookImg, title, author, publisher, bookIsbn) + '</div>';
 
