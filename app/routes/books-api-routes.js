@@ -35,13 +35,17 @@ module.exports = function (app) {
     }
   });
 
+  /*
+  * PUT 
+  * POST
+  *  RAW 
+  */  
   app.put("/api/books/:id", async function (req, res){
-    const dbBooks = await db.Book.update({
-      where:{
-        id: req.params.id,
-        review: req.params.review
-      }
-    })
+    const dbBooks = await db.Book.update(
+      {review: req.body.review},
+      {where: {id:req.params.id}}
+    )
+    res.json(dbBooks);
   })
 
   app.delete("/api/books/:id", async function (req, res) {
