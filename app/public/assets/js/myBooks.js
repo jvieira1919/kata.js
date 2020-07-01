@@ -84,7 +84,7 @@ $(document).ready(function () {
                             <h3 class="card-title">${title}</h3> 
                             <p class="card-text"><b> Author : </b> ${author}</p> 
                             <p class="card-text"><b> Categories : </b> ${categories}</p>  
-                            <p class="card-text"><b> Review : </b><textarea class="form-control text" rows="4" ></textarea></p> 
+                            <p class="card-text"><b> Review : </b><textarea class="form-control text" rows="4" >${review}</textarea></p> 
                             <a target="" href="" id="${id}" class="btn review btn-outline-warning hvr-push">Review</a>
                             <a target="" href="" id="${id}" class="btn remove btn-outline-warning hvr-push">Remove Book </a>
                         </div>
