@@ -129,7 +129,7 @@ $(document).ready(function () {
             publisher = res.items[i].volumeInfo.publisher;
             description = res.items[i].volumeInfo.description;
             bookLink = res.items[i].volumeInfo.previewLink;
-            bookIsbn = res.items[i].volumeInfo.industryIdentifiers[1].identifier;
+            bookIsbn = res.items[i].volumeInfo.industryIdentifiers[0].identifier;
             bookImg = res.items[i].volumeInfo.imageLinks.smallThumbnail;
             categories = res.items[i].volumeInfo.categories[0];
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
     function formatOutput(bookImg, title, author, publisher, bookIsbn) {
 
-        var viewUrl = 'book.html?isbn=' + bookIsbn;
+        var viewUrl = 'read.html?isbn=' + bookIsbn;
 
         var htmlCard = `
         <div class = 'card searchCard' style= 'background: #DF0D51'>

@@ -11,4 +11,8 @@ module.exports = function (app) {
   app.get("/user", function (req, res) {
     res.sendFile("user.html",{root: path.join(__dirname,"../public/views")});
   });
+
+  app.get("/read.html", function (req, res) {
+    res.sendFile("read.html",{root: path.join(__dirname,"../public/views")});
+  });
 };
