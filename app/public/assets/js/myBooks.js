@@ -39,39 +39,39 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (res) {
                     console.log(res);
-                    
+
                     displayResults(res);
                 }
             })
         }
     }
 
-              
 
-$("#searchTerm").val("");
 
-function displayResults(res) {
+    $("#searchTerm").val("");
 
-    for (var i = 0; i < res.length; i++) {
+    function displayResults(res) {
 
-        title = res[i].title;
-        let id = res[i].id;
-        author = res[i].author;
-        review = res[i].review;
-        bookImg = res[i].cover;
-        categories = res[i].genre;
+        for (var i = 0; i < res.length; i++) {
 
-        outputList.innerHTML += '<div class="row mt-4">' +
-            formatOutput(bookImg, title, author, review, id) + '</div>';
+            title = res[i].title;
+            let id = res[i].id;
+            author = res[i].author;
+            review = res[i].review;
+            bookImg = res[i].cover;
+            categories = res[i].genre;
 
+            outputList.innerHTML += '<div class="row mt-4">' +
+                formatOutput(bookImg, title, author, review, id) + '</div>';
+
+        }
     }
-}
 
 
-function formatOutput(bookImg, title, author, review, id) {
+    function formatOutput(bookImg, title, author, review, id) {
 
 
-    var htmlCard = `
+        var htmlCard = `
     <div class = 'card searchCard' style= 'background: #DF0D51'>
         <div  class="card-body">
         <div  class="row">
@@ -85,6 +85,7 @@ function formatOutput(bookImg, title, author, review, id) {
                             <p class="card-text"><b> Author : </b> ${author}</p> 
                             <p class="card-text"><b> Categories : </b> ${categories}</p>  
                             <p class="card-text"><b> Review : </b><textarea class="form-control text" rows="4" ></textarea></p> 
+                            <a target="" href="" id="${id}" class="btn review btn-outline-warning hvr-push">Review</a>
                             <a target="" href="" id="${id}" class="btn remove btn-outline-warning hvr-push">Remove Book </a>
                         </div>
 
@@ -93,8 +94,8 @@ function formatOutput(bookImg, title, author, review, id) {
     </div>                                 
         `
 
-    return htmlCard;
-}
+        return htmlCard;
+    }
 
 
 });
@@ -112,6 +113,37 @@ $('.book-list').on('click', function (event) {
                 console.log("Deleted book: " + data);
             }
         )
+
     }
 });
 
+$('.book-list').on('click', function (event) {
+    let target = event.target,
+        id = target.id;
+
+    let review,
+        title = event.target.parentElement.children[0].innerHTML;
+    event.preventDefault();
+
+    if (target.matches('a.review')) {
+        review = {
+            review: target.parentElement.children[3].children[1].value
+        }
+
+        $.ajax("/api/books/" + id, {
+            type: "PUT",
+            data: JSON.stringify(review),
+            dataType: "json",
+            contentType: "application/json"
+        }).then(
+            function () {
+                console.log("updated review on book: " + id);
+                console.log(review);
+                
+            }
+        );
+
+        // console.log( );
+        
+    }
+});
