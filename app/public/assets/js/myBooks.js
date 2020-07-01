@@ -121,20 +121,29 @@ $('.book-list').on('click', function (event) {
     let target = event.target,
         id = target.id;
 
-    let review;
+    let review,
+        title = event.target.parentElement.children[0].innerHTML;
     event.preventDefault();
 
     if (target.matches('a.review')) {
-        alert("sucess");
-        // review = {
-        //     review: target.parentElement.children[3].value
-        // }
+        review = {
+            review: target.parentElement.children[3].children[1].value
+        }
 
-        // $.ajax("/api/books/" + id, {
-        //     type: "PUT",
-        //     data: JSON.stringify(review),
-        //     dataType: "json",
-        //     contentType: "application/json"
-        // });
+        $.ajax("/api/books/" + id, {
+            type: "PUT",
+            data: JSON.stringify(review),
+            dataType: "json",
+            contentType: "application/json"
+        }).then(
+            function () {
+                console.log("updated review on book: " + id);
+                console.log(review);
+                
+            }
+        );
+
+        // console.log( );
+        
     }
 });
