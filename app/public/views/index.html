@@ -25,25 +25,25 @@
         </div>     
     </header>
       
-     <div class="form-box">
+    
+    <div class="form-box">
 
         <div class="button-box">
             <div id="btn"></div>
-         <button type="button" class="toggle-btn "  onclick="signIn()">Sign in</button>
-         <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button>
+         <button type="button" class="toggle-btn xxx" >Sign in</button>
+         <button type="button" class="toggle-btn yyy">Sign up</button>
 
         </div>
          
         <form action="" id="signIn" class="input-group">
-            <input type="text" class="input-field" placeholder="User Id" required>
-            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="email" id="email-input" class="input-field" placeholder="Email" required>
+            <input type="password" id="password-input" class="input-field" placeholder="Enter Password" required>
             <input type="checkbox" class="check-box"><span>Remember Password</span>
             <button type="submit" class="submit-btn hvr-push"> Sign In</button>
         </form>
         <form action="" id="signUp" class="input-group">
-            <input type="text" class="input-field" placeholder="User Id" required>
-            <input type="text" class="input-field" placeholder="Email" required>
-            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <input type="email"  id="emaill-input" class="input-field" placeholder="Email" required>
+            <input type="password" id="passwordd-input" class="input-field" placeholder="Enter Password" required>
             <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
             <button type="submit" class="submit-btn hvr-push"> Sign Up</button>
         </form>
@@ -51,6 +51,7 @@
 
      </div>
 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../assets/js/index.js"></script>
 
 </body>
