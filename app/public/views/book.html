@@ -22,14 +22,7 @@
 <body>
     <div class="jumbotron text-center">
         <a href="/logout" class="btn btn-rounded signOut hvr-push">Sign Out</a>
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/user">
-          <img src="../assets/img/bbb.png" width="30" height="30" class="d-inline-block align-top" alt="">
-          Home
-        </a>
-        <a type="button" href=""id="myBooks" class="btn btn-outline-warning btn-lg myBtn btn-block hvr-push">My
-            Books</a>
-      </nav>
+    
         <div class="container">
 
             <form class="card card-sm formCard">
@@ -45,7 +38,8 @@
                 <div class="card user text-center">
                     <img src="../assets/img/bbb.png" class="card-img-top brainimg" alt="...">
                     <div class="card-body text-center">
-
+                        <button 
+                        class="btn btn-outline-warning btn-lg myBtn btn-block hvr-push" onclick="window.location.href='/user'">Go to Search</button>
                         <div class="sunMoon"> 
                             <input type="checkbox" class="checkbox" id="chk" />
                             <label class="label" for="chk">
