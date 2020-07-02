@@ -22,7 +22,7 @@ Not only can you search for books, and read them, but you can also add books to 
 Feel free to create your own account for added security. 
 Book Brain works with all web browsers, but we recommend Google Chrome for the best experience. 
   
-  ##Features
+Features
 
 Search for any book you like
 Add a book to your library
@@ -31,11 +31,20 @@ Add a review
 Read a book of your choice
 
 
-##Prerequisites
+Prerequisites
 
 MYSQL
 node
-    
+
+Dependencies
+
+This package depends on the following packages:
+
+express
+animate.css
+mysql
+sequelize
+
 
   
   
