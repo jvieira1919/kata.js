@@ -13,7 +13,7 @@ $(document).ready(function () {
         bookList.style.visibility = 'hidden';
     });
 
-        search('subject:art');
+        
 
     chk.addEventListener('change', () => {
         document.body.classList.toggle('dark');
@@ -72,13 +72,13 @@ $(document).ready(function () {
     });
 
     document.querySelector("#search").addEventListener("click", function searchBtn() {
-
+         event.preventDefault();
         search($("#searchTerm").val());
     });
-
+    search('subject:fiction');
     function search(searchData) {
 
-        // event.preventDefault();
+        
 
         bookList.style.visibility = 'visible';
 
