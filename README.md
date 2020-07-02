@@ -21,10 +21,24 @@ Browse from a wide variety of books from a multitude of different genres by seve
 Not only can you search for books, and read them, but you can also add books to your own personal list.
 Feel free to create your own account for added security. 
 Book Brain works with all web browsers, but we recommend Google Chrome for the best experience. 
-   Book Brain is the world's largest site for readers.
-We decided to create Book Brain which will serve as an interactive platform where people can read books, 
-also connect with their friends and family to see what books they are reading currently. 
-Our mission is to help users find, share, review, and save books they love.
+  
+  ##Features
+
+Search for any book you like
+Add a book to your library
+Review a book
+Add a review
+Read a book of your choice
+
+
+##Prerequisites
+
+MYSQL
+node
+    
+
+  
+  
  ## ✅ Tests 
   There are no tests or test examples for this README generator.
  ## 🤝 Team 
